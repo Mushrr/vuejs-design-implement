@@ -1,0 +1,15 @@
+{
+  "name": "vuejs-design-implement",
+  "version": "1.0.0",
+  "description": "vue.js 设计与实现的读书笔记与代码",
+  "main": "index.js",
+  "repository": "https://github.com/Mushrr/vuejs-design-implement.git",
+  "author": "Mushrr <mushroom@mails.ccnu.edu.cn>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite"
+  },
+  "dependencies": {
+    "vite": "^2.9.13"
+  }
+}
