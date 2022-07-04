@@ -1,26 +1,51 @@
-import {funcTest} from './utils/utils.js'
+import { render, ButtonComponent } from './lib/vDom.js'
 
-let iters = 10000;
 
-funcTest(() => {
-    let array = []
-    for(let i = 0; i < iters; i ++) {
-        array.push(i);
+const vdom = {
+    tag: 'div',
+    children:
+    [
+        {
+            tag: 'div',
+            children: "X",
+            on: {
+               click: () => {
+                    console.log('HI');
+               } 
+            }
+        },
+        {
+            tag: 'div',
+            children: [
+                {
+                    tag: 'img',
+                    src: "http://www.mushrain.com/images/John.png",
+                    on: {
+                        click: () => {
+                             document.body.appendChild(
+                                document.createTextNode("🍎🍎🍎")
+                             );
+                        } 
+                    }
+                },
+            ]
+        },
+        ButtonComponent()
+    ],
+    props: {
+        style: {
+            backgroundImage: "linear-gradient(#c1b7ff, #b1b1f6)",
+        }
     }
-}, {msg: "原生JS"})
+}
 
-funcTest(() => {
-    for (let i = 0; i < iters; i ++) {
-        let div = document.createElement('div');
-        div.innerText = "Mushroom"
-        document.body.appendChild(div);
-    }
-}, {msg: "DOM"})
+let other = {
+    tag: 'div',
+    children: [
+        vdom
+    ]
+}
+render(other, document.body);
 
 
-funcTest(() => {
-    let msg = "<div>Mushroom</div>"
-    for (let i = 0; i < iters; i ++) {
-       document.innerText += msg;
-    }
-}, {msg: "RAW"})
+// console.log(document.querySelector('body'))
